@@ -25,7 +25,6 @@ def load_data_into_memory(DIR, ANNO, ATTRIBUTE):
             X.append(img)
         except:
             print('patient id \'{}\' cannot be found'.format(key))
-        count += 1
 
     x, y = np.array(X), np.array(y)
     print('Loaded {} images into memory'.format(len(y)))

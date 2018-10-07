@@ -37,7 +37,6 @@ def main():
 	print(X_test.shape, 'test data')
 
 	model = svm.SVC()
-
 	evaluate(train(X_train, Y_train, model, "svm_model.pkl"), X_test, Y_test)
 
 main()
