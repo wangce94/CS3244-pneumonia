@@ -6,6 +6,7 @@ from sklearn.model_selection import train_test_split
 from scipy.misc import toimage
 from matplotlib import pyplot as plt
 import os
+import cv2
 
 def parse_csv(CSV):
     df = pd.read_csv(CSV, delim_whitespace=False, header=0)
@@ -22,8 +23,9 @@ def load_data_into_memory(DIR, ANNO, ATTRIBUTE):
             mu = df[ATTRIBUTE][key]
             y.append(mu)
             img = pydicom.read_file(DIR + image_path).pixel_array
+            img = cv2.resize(img, dsize=(128, 128), interpolation=cv2.INTER_LANCZOS4)
             X.append(img)
-        except:
+        except Exception as e:
             print('patient id \'{}\' cannot be found'.format(key))
 
     x, y = np.array(X), np.array(y)
