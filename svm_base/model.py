@@ -5,7 +5,7 @@ from load_img import *
 def train(X_train, Y_train, model, filename=0):
 	print("Training")
 	model.fit(X_train, Y_train)
-	if filename is 1:
+	if filename is not 0:
 		pickle.dump(model, open(filename, 'wb'))
 
 	return model
